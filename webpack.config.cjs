@@ -2,6 +2,7 @@ const path = require('path');
 const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
+  devtool: "source-map",
   entry: path.join(__dirname, '/src/app/index.tsx'),
   module: {
     rules: [

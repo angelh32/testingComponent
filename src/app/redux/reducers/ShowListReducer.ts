@@ -1,4 +1,4 @@
-import { Show } from "../../types/types";
+import { Episode, Show } from "../../types/types";
 import { SUCCESS_GETTING_SHOWS } from "../actions/GetShows";
 
 

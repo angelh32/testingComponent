@@ -1,5 +1,5 @@
-import { ApiShow, ApiShowsResults } from "../types/APITypes"
-import { Show } from "../types/types"
+import { ApiEpisode, ApiEpisodeResponse, ApiShow, ApiShowsResults } from "../types/APITypes"
+import { Episode, Show } from "../types/types"
 
 export const removeHtmlTag = (rawText: string) => {
 
@@ -22,3 +22,22 @@ export function apiToShows(rawData: ApiShowsResults): Show[] {
     })
     return shows
 }
+export function apiToEpisodes(rawData: ApiEpisodeResponse): Episode[] {
+    const shows: Episode[] = rawData.map((item: ApiEpisode) => {
+        return {
+            id: item.id,
+            url: item.url,
+            name: item.name,
+            season: item.season,
+            number: item.number,
+            airdate: item.airdate,
+            image: item.image ? item.image.medium : "",
+            summary: item.summary,
+        }
+    })
+    return shows
+}
+export function setZeros(data:number) {
+    const base = "00"+data
+    return base.substring(base.length - 2) 
+ }

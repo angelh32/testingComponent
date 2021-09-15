@@ -10,3 +10,13 @@ export interface Show {
     summary?: string
     image?: string
 }
+export interface Episode {
+    id: number,
+    url: string,
+    name: string,
+    season: number,
+    number: number,
+    airdate: string,
+    image: string,
+    summary: string,
+}
