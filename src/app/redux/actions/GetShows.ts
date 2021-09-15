@@ -1,5 +1,6 @@
-import { apiToShows } from "../../tools/helpers";
+import { apiToEpisodes, apiToShows } from "../../tools/helpers";
 import { Show } from "../../types/types";
+import { SET_EPPISODES } from "../reducers/CurrentShow";
 
 export const START_GETTING_SHOWS = "START_GETTING_SHOWS"
 export const SUCCESS_GETTING_SHOWS = "SUCCESS_GETTING_SHOWS"
@@ -15,6 +16,27 @@ export const successGettingShows = payload => ({
 });
 
 export const fetchShows = searchInfo => {
+    return dispatch => {
+        return fetch(`https://api.tvmaze.com/search/shows?q=${searchInfo}`)
+            .then(apicall => apicall.json())
+            .then(resJson => dispatch(successGettingShows(apiToShows(resJson))))
+    }
+};
+
+export const successGettingEpisodes = payload => ({
+    type: SET_EPPISODES,
+    payload
+});
+
+export const fetchEpisodes = searchInfo => {
+    return dispatch => {
+        return fetch(`https://api.tvmaze.com/shows/${searchInfo}/episodes`)
+            .then(apicall => apicall.json())
+            .then(resJson => dispatch(successGettingEpisodes({ episodes: apiToEpisodes(resJson) })))
+    }
+};
+
+export const fetchEpisodeInfo = searchInfo => {
     return dispatch => {
         return fetch(`https://api.tvmaze.com/search/shows?q=${searchInfo}`)
             .then(apicall => apicall.json())
