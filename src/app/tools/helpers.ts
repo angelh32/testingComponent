@@ -2,7 +2,6 @@ import { ApiEpisode, ApiEpisodeResponse, ApiShow, ApiShowsResults } from "../typ
 import { Episode, Show } from "../types/types"
 
 export const removeHtmlTag = (rawText: string) => {
-
     return rawText.replace(new RegExp(/\<[\/bip]+\>/, 'g'), "")
 }
 export function apiToShows(rawData: ApiShowsResults): Show[] {
@@ -37,7 +36,7 @@ export function apiToEpisodes(rawData: ApiEpisodeResponse): Episode[] {
     })
     return shows
 }
-export function setZeros(data:number) {
-    const base = "00"+data
-    return base.substring(base.length - 2) 
- }
+export function setZeros(data: number) {
+    const base = "00" + data
+    return base.substring(base.length - 2)
+}

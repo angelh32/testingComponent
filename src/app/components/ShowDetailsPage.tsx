@@ -7,7 +7,7 @@ import { RootState } from "../redux/store";
 import { setZeros } from "../tools/helpers";
 import { Show } from "../types/types";
 // .replace(new RegExp(/\<[\/bp]\>/, 'g'),"")
-interface ShowDetailsPageProps {
+export interface ShowDetailsPageProps {
     show: Show;
     match: any;
 }
