@@ -5,7 +5,7 @@ import ShowDetailsPage, {
 } from './ShowDetailsPage';
 
 /**
- * @jest-environment jest-dom
+ * @jest-environment jsdom
  */
 describe('<LoginForm />', () => {
   function renderLoginForm(
