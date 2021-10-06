@@ -3,10 +3,13 @@ import { render, fireEvent } from '@testing-library/react';
 import ShowDetailsPage, {
   ShowDetailsPageProps,
 } from './ShowDetailsPage';
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
 
 /**
  * @jest-environment jsdom
  */
+
 describe('<LoginForm />', () => {
   function renderLoginForm(
     props: Partial<ShowDetailsPageProps> = {},
@@ -15,7 +18,11 @@ describe('<LoginForm />', () => {
       show: {},
       match: { params: { id: 12 } },
     };
-    return render(<ShowDetailsPage {...defaultProps} {...props} />);
+    return render(
+      <Provider store={store}>
+        <ShowDetailsPage {...defaultProps} {...props} />
+      </Provider>
+    );
   }
 
   test('should display', async () => {
