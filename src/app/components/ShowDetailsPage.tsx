@@ -15,9 +15,9 @@ export interface ShowDetailsPageProps {
 const ShowDetailsPage: React.FC<ShowDetailsPageProps> = ({
     match
 }: ShowDetailsPageProps) => {
-
     const dispatch: Dispatch<any> = useDispatch()
-    const episodes = useSelector((state: RootState) => state.CurrentShowReducer.episodes)
+    const episodes = useSelector((state: RootState) => {
+        return state.CurrentShowReducer.episodes})
     useEffect(() => {
         dispatch(fetchEpisodes(match.params.id))
     }, [])
