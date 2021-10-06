@@ -1,6 +1,9 @@
 import { apiToEpisodes, apiToShows } from "../../tools/helpers";
 import { Show } from "../../types/types";
 import { SET_EPPISODES } from "../reducers/CurrentShow";
+// import fetch from "node-fetch";
+import { ApiEpisodeResponse, ApiShowsResults } from "../../types/APITypes";
+import { callApi, callApiEpisodeInfo, callApiEpisodeList, callApiShow } from "./ApiCall";
 
 export const START_GETTING_SHOWS = "START_GETTING_SHOWS"
 export const SUCCESS_GETTING_SHOWS = "SUCCESS_GETTING_SHOWS"
@@ -17,9 +20,8 @@ export const successGettingShows = payload => ({
 
 export const fetchShows = searchInfo => {
     return dispatch => {
-        return fetch(`https://api.tvmaze.com/search/shows?q=${searchInfo}`)
-            .then(apicall => apicall.json())
-            .then(resJson => dispatch(successGettingShows(apiToShows(resJson))))
+        return callApiShow(searchInfo)
+            .then(resJson => dispatch(successGettingShows(resJson)))
     }
 };
 
@@ -30,16 +32,14 @@ export const successGettingEpisodes = payload => ({
 
 export const fetchEpisodes = searchInfo => {
     return dispatch => {
-        return fetch(`https://api.tvmaze.com/shows/${searchInfo}/episodes`)
-            .then(apicall => apicall.json())
-            .then(resJson => dispatch(successGettingEpisodes({ episodes: apiToEpisodes(resJson) })))
+        return callApiEpisodeList(searchInfo)
+            .then(resJson => dispatch(successGettingEpisodes({ episodes: resJson })))
     }
 };
 
 export const fetchEpisodeInfo = searchInfo => {
     return dispatch => {
-        return fetch(`https://api.tvmaze.com/search/shows?q=${searchInfo}`)
-            .then(apicall => apicall.json())
-            .then(resJson => dispatch(successGettingShows(apiToShows(resJson))))
+        return callApiEpisodeInfo(searchInfo)
+            .then(resJson => dispatch(successGettingShows(resJson)))
     }
 };

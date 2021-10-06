@@ -1,5 +1,4 @@
 import { removeHtmlTag } from "./helpers"
-
 describe("#removeHtmlTag", () => {
     const testText = '<p><b>Good Girls</b> follows three "good girl"</p>'
     const expected = 'Good Girls follows three "good girl"'

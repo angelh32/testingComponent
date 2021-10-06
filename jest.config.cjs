@@ -1,9 +1,14 @@
 module.exports = {
-    roots: ['<rootDir>/src'],
-    transform: {
-        '^.+\\.tsx?$': 'ts-jest',
-    },
-    setupFilesAfterEnv: ['./jest.setup.cjs'],
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-}
+  roots: ['<rootDir>/src'],
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  setupFilesAfterEnv: [
+    '@testing-library/jest-dom/',
+    '@testing-library/jest-dom/extend-expect',
+    './jest.setup.cjs',
+    './jest-setup.ts',
+  ],
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.tsx?$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+};
