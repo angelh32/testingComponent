@@ -12,7 +12,7 @@ export const callApiShow = (searchInfo) => {
 }
 
 export const callApiEpisodeList = (searchInfo) => {
-    return callApi(`https://api.tvmaze.com/search/shows?q=${searchInfo}`)
+    return callApi(`https://api.tvmaze.com/shows/${searchInfo}/episodes`)
         .then(apicall => apicall.json())
         .then(resJson => apiToEpisodes(resJson as ApiEpisodeResponse))
 }

@@ -1,12 +1,9 @@
+import { Grid } from '@mui/material';
 import * as React from "react";
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Dispatch } from "redux";
-import { fetchShows } from "../redux/actions/GetShows";
+import { useSelector } from 'react-redux';
 import { RootState } from "../redux/store";
 import ShowComponent from "./ShowComponent";
 import "./ShowSearchResults.css";
-
 
 interface ShowSearchResultsProps { }
 
@@ -23,10 +20,10 @@ const ShowSearchResults: React.FC<ShowSearchResultsProps> = (props) => {
     )
     }
     return (
-        <div className="searchPage">
-            <div className="searchGrid">{listItems}</div>
-        </div>
-    )
+      <Grid container spacing={2}>
+        {listItems}
+      </Grid>
+    );
 }
 
 export default ShowSearchResults
